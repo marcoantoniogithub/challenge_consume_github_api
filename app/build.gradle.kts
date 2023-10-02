@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.challenge_consume_github_api.CustomTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -67,8 +67,6 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-//    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation("io.coil-kt:coil-compose:2.4.0")
@@ -83,6 +81,19 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
+
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.3")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+
+    testImplementation("org.mockito:mockito-inline:2.13.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+
+    testImplementation("androidx.arch.core:core-testing:2.1.0")
 }
 
 kapt {

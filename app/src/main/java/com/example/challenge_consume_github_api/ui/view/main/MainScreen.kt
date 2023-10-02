@@ -30,9 +30,9 @@ import com.example.challenge_consume_github_api.ui.components.LoadingComponent
 
 @Composable
 fun MainScreen(
-    navController: NavController
+    navController: NavController,
+    viewModel: MainViewModel = hiltViewModel<MainViewModel>()
 ) {
-    val viewModel = hiltViewModel<MainViewModel>()
 
     viewModel.getRepositories()
 
@@ -52,46 +52,49 @@ fun MainScreen(
 
 @Composable
 fun List(list: List<UsersDTO>, navController: NavController) {
-
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2)
-    ) {
-        items(list) {
-            Card(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp)
-                    .clickable {
-                      navController.navigate(
-                          Screen.UserDetailsScreen.route.plus(
-                          "/${it.login}"
-                      ))
-                    },
-                border = BorderStroke(2.dp, Color.LightGray)
-            ) {
-                Column(
+    Column {
+        Text(text = "Users")
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2)
+        ) {
+            items(list) {
+                Card(
                     modifier = Modifier
                         .fillMaxSize()
-                ){
-                    AsyncImage(
+                        .padding(16.dp)
+                        .clickable {
+                            navController.navigate(
+                                Screen.UserDetailsScreen.route.plus(
+                                    "/${it.login}"
+                                )
+                            )
+                        },
+                    border = BorderStroke(2.dp, Color.LightGray)
+                ) {
+                    Column(
                         modifier = Modifier
-                            .padding(16.dp)
-                            .fillMaxSize(),
-                        alignment = Alignment.Center,
-                        contentScale = ContentScale.Crop,
-                        model = it.avatar_url!!,
-                        contentDescription = "image avatar"
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .align(Alignment.CenterHorizontally),
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.W700,
-                        text = it.login!!
-                    )
-                }
+                            .fillMaxSize()
+                    ){
+                        AsyncImage(
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .fillMaxSize(),
+                            alignment = Alignment.Center,
+                            contentScale = ContentScale.Crop,
+                            model = it.avatar_url!!,
+                            contentDescription = "image avatar"
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(8.dp)
+                                .align(Alignment.CenterHorizontally),
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.W700,
+                            text = it.login!!
+                        )
+                    }
 
+                }
             }
         }
     }

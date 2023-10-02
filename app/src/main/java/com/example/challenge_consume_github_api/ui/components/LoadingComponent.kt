@@ -15,6 +15,6 @@ fun LoadingComponent() {
         modifier = Modifier.fillMaxSize(),
     ) {
         CircularProgressIndicator()
-        Text(text = "Welcome")
+        Text(text = "Loading")
     }
 }

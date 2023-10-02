@@ -7,7 +7,6 @@ import com.example.challenge_consume_github_api.common.Resource
 import com.example.challenge_consume_github_api.data.remote.dto.UserDetailsDTO
 import com.example.challenge_consume_github_api.domain.usecase.GetUserDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

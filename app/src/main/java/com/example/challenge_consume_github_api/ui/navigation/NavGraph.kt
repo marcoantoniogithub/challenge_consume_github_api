@@ -1,6 +1,7 @@
 package com.example.challenge_consume_github_api.ui.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -9,8 +10,8 @@ import com.example.challenge_consume_github_api.ui.view.main.MainScreen
 import com.example.challenge_consume_github_api.ui.view.userdetails.UserDetailsScreen
 
 @Composable
-fun NavGraph() {
-    val navController = rememberNavController()
+fun NavGraph(navController: NavHostController = rememberNavController()) {
+
 
     NavHost(navController, startDestination = Screen.Main.route) {
         composable(Screen.Main.route) {
